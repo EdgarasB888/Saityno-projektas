@@ -5,8 +5,8 @@ namespace MoviesRegisterRest.Data.Repositories;
 
 public interface IMovieStudiosRepository
 {
-    Task<MovieStudio?> GetAsync(int movieStudioId);
-    Task<IReadOnlyList<MovieStudio?>> GetManyAsync();
+    Task<MovieStudio?> GetAsync(int directorId, int movieStudioId);
+    Task<IReadOnlyList<MovieStudio?>> GetManyAsync(int directorId);
     Task CreateAsync(MovieStudio movie);
     Task UpdateAsync(MovieStudio movie);
     Task DeleteAsync(MovieStudio movie);
@@ -21,14 +21,19 @@ public class MovieStudiosRepository : IMovieStudiosRepository
         _webDbContext = webDbContext;
     }
 
-    public async Task<MovieStudio?> GetAsync(int movieStudioId)
+    public async Task<MovieStudio?> GetAsync(int directorId, int movieStudioId)
     {
-        return await _webDbContext.MovieStudios.FirstOrDefaultAsync(o => o.Id == movieStudioId);
+        var director = _webDbContext.Directors.FirstOrDefault(o => o.Id == directorId);
+        if (director == null)
+        {
+            return null;
+        }
+        return await _webDbContext.MovieStudios.Include(o => o.Director).FirstOrDefaultAsync(o => o.Id == movieStudioId && o.Director.Id == directorId);
     }
 
-    public async Task<IReadOnlyList<MovieStudio?>> GetManyAsync()
+    public async Task<IReadOnlyList<MovieStudio?>> GetManyAsync(int directorId)
     {
-        return await _webDbContext.MovieStudios.ToListAsync();
+        return await _webDbContext.MovieStudios.Include(o => o.Director).Where(o => o.Director.Id == directorId).ToListAsync();
     }
 
     public async Task CreateAsync(MovieStudio movieStudio)

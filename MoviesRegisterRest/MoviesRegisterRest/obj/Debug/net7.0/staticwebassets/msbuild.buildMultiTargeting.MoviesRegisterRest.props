@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="..\build\MoviesRegisterRest.props" />
+  <Import Project="../build/MoviesRegisterRest.props" />
 </Project>

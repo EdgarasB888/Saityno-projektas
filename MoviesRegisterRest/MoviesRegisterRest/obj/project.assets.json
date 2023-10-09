@@ -3742,32 +3742,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\edgar\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/imac/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Mokslai\\7 semestras\\Saityno taikomųjų programų projektavimas\\Saityno-projektas\\MoviesRegisterRest\\MoviesRegisterRest\\MoviesRegisterRest.csproj",
+      "projectUniqueName": "/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/MoviesRegisterRest.csproj",
       "projectName": "MoviesRegisterRest",
-      "projectPath": "D:\\Mokslai\\7 semestras\\Saityno taikomųjų programų projektavimas\\Saityno-projektas\\MoviesRegisterRest\\MoviesRegisterRest\\MoviesRegisterRest.csproj",
-      "packagesPath": "C:\\Users\\edgar\\.nuget\\packages\\",
-      "outputPath": "D:\\Mokslai\\7 semestras\\Saityno taikomųjų programų projektavimas\\Saityno-projektas\\MoviesRegisterRest\\MoviesRegisterRest\\obj\\",
+      "projectPath": "/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/MoviesRegisterRest.csproj",
+      "packagesPath": "/Users/imac/.nuget/packages/",
+      "outputPath": "/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\edgar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/imac/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
+        "/usr/local/share/dotnet/library-packs": {},
+        "/usr/local/share/dotnet/sdk/7.0.304/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3828,7 +3822,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.304/RuntimeIdentifierGraph.json"
       }
     }
   }
