@@ -50,7 +50,7 @@ public class MoviesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<MovieDto>> Create(int directorId, int movieStudioId, int movieId, CreateMovieDto createMovieDto)
+    public async Task<ActionResult<MovieDto>> Create(int directorId, int movieStudioId, CreateMovieDto createMovieDto)
     {
         var director = await _DirectorsRepository.GetAsync(directorId);
         if (director == null)
