@@ -239,3 +239,7 @@ D:/Mokslai/7 semestras/Saityno taikomųjų programų projektavimas/Saityno-proje
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/MoviesRegisterRest.pdb
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/MoviesRegisterRest.genruntimeconfig.cache
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/ref/MoviesRegisterRest.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/FluentValidation.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/FluentValidation.AspNetCore.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/FluentValidation.DependencyInjectionExtensions.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/MoviesRegisterRest.MvcApplicationPartsAssemblyInfo.cs

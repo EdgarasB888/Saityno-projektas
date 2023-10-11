@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "GI5rq7pQdyCQ6dk+aCf8JRKL2mLKpEnaC4KT06+9opYpiC45304ClrH6IHcT3E7Ou9HXSQo8a5cTHuY2XjFaqQ==",
+  "dgSpecHash": "h81vgSKvDV+nXTzcQC44Fp7GH/4FC38LX6tXys3cx5p+zTEkkDHd3yeE6VPr107p0qM+z60yb4Q+OOOpw7M5Jg==",
   "success": true,
   "projectFilePath": "/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/MoviesRegisterRest.csproj",
   "expectedPackageFiles": [
     "/Users/imac/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/imac/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
+    "/Users/imac/.nuget/packages/fluentvalidation/11.7.1/fluentvalidation.11.7.1.nupkg.sha512",
+    "/Users/imac/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "/Users/imac/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.5.1/fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "/Users/imac/.nuget/packages/google.protobuf/3.21.9/google.protobuf.3.21.9.nupkg.sha512",
     "/Users/imac/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/imac/.nuget/packages/k4os.compression.lz4/1.3.5/k4os.compression.lz4.1.3.5.nupkg.sha512",
