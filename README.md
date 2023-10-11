@@ -1,7 +1,6 @@
 # Saityno-projektas
  
-1.	Sprendžiamo uždavinio aprašymas
-1.1	Sistemos paskirtis
+Sistemos paskirtis
 
 Šio projekto tikslas – sukurti internetinę svetainę, kurioje kino režisieriai galėtų užsiregistruoti į filmą, kurio filmavime norėtų dalyvauti.
 
@@ -9,7 +8,7 @@ Veikimo principas – bus sukurta internetinė aplikacija, kuria naudosis kino r
 
 Kino režisieriai, norėdami naudotis šia platforma, turės prisiregistruoti prie internetinės aplikacijos. Prisiregistravę, galės peržiūrėti filmus, į kuriuos galima užsiregistruoti, užsiregistruoti į filmą ir taip pat išsiregistruoti iš filmo. Taip pat bus galimybė peržiūrėti filmų studijas, kurios ieško darbuotojų filmams bei peržiūrėti kitų kino režisierių filmus.
 
-1.2	Funkciniai reikalavimai
+Funkciniai reikalavimai
 
 Neregistruotas sistemos naudotojas galės:
 •	Peržiūrėti platformos namų puslapį;
