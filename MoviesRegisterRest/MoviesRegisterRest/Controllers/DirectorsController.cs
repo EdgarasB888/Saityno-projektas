@@ -1,4 +1,6 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using MoviesRegisterRest.Data;
 using MoviesRegisterRest.Data.Dtos.Directors;
 using MoviesRegisterRest.Data.Entities;
 using MoviesRegisterRest.Data.Repositories;
@@ -17,34 +19,65 @@ public class DirectorsController : ControllerBase
     }
 
     // AutoMapper
-    [HttpGet]
+    //[HttpGet]
     public async Task<IEnumerable<DirectorDto>> GetMany()
     {
-        var Directors = await _DirectorsRepository.GetManyAsync();
+        var directors = await _DirectorsRepository.GetManyAsync();
 
-        return Directors.Select(o => new DirectorDto(o.Id, o.FullName, o.Gender, o.Country, o.BirthDate, o.RegisterDate, o.Biography, o.SpokenLanguages, o.Address, o.Phone, o.Email, o.IsAvailable));
+        return directors.Select(o => new DirectorDto(o.Id, o.FullName, o.Gender, o.Country, o.BirthDate, o.RegisterDate, o.Biography, o.SpokenLanguages, o.Address, o.Phone, o.Email, o.IsAvailable));
+    }
+    
+    [HttpGet(Name = "GetTopics")]
+    // /directors?pageNumber=1&pageSize=5
+    public async Task<IEnumerable<DirectorDto>> GetManyPaging([FromQuery] DirectorSearchParameters searchParameters)
+    {
+        var directors = await _DirectorsRepository.GetManyAsync(searchParameters);
+
+        var previousPageLink = directors.HasPrevious
+            ? CreateTopicsResourceUri(searchParameters, ResourceUriType.PreviousPage)
+            : null;
+        
+        var nextPageLink = directors.HasNext
+            ? CreateTopicsResourceUri(searchParameters, ResourceUriType.NextPage)
+            : null;
+
+        var paginationMetaData = new
+        {
+            totalCount = directors.TotalCount,
+            pageSize = directors.PageSize,
+            currentPage = directors.CurrentPage,
+            totalPages = directors.TotalPages,
+            previousPageLink,
+            nextPageLink
+        };
+        
+        // Pagination:
+        // {"resource": {}, "paging": {}}
+        Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetaData));
+
+        return directors.Select(o => new DirectorDto(o.Id, o.FullName, o.Gender, o.Country, o.BirthDate, o.RegisterDate, o.Biography, o.SpokenLanguages, o.Address, o.Phone, o.Email, o.IsAvailable));
     }
 
-    // api/Directors/{DirectorId}
+    // api/Directors/{directorId}
     [HttpGet]
-    [Route("{DirectorId}")]
-    public async Task<ActionResult<DirectorDto>> Get(int DirectorId)
+    [Route("{directorId}")]
+    public async Task<ActionResult<DirectorDto>> Get(int directorId)
     {
-        var Director = await _DirectorsRepository.GetAsync(DirectorId);
+        var director = await _DirectorsRepository.GetAsync(directorId);
 
-        if (Director == null)
+        if (director == null)
         {
-            return NotFound();
+            return NotFound(new { message = $"Could not find Director with an Id of {directorId}" });
         }
         
-        return new DirectorDto(Director.Id, Director.FullName, Director.Gender, Director.Country, Director.BirthDate, Director.RegisterDate, Director.Biography, Director.SpokenLanguages, Director.Address, Director.Phone, Director.Email, Director.IsAvailable);
+        return new DirectorDto(director.Id, director.FullName, director.Gender, director.Country, director.BirthDate, director.RegisterDate, director.Biography, director.SpokenLanguages, director.Address, director.Phone, director.Email, director.IsAvailable);
     }
     
     // api/Directors
     [HttpPost]
     public async Task<ActionResult<DirectorDto>> Create(CreateDirectorDto createDirectorDto)
     {
-        var Director = new Director
+        var director = new Director
         {
             FullName = createDirectorDto.FullName,
             Gender = createDirectorDto.Gender,
@@ -59,56 +92,78 @@ public class DirectorsController : ControllerBase
             IsAvailable = createDirectorDto.IsAvailable
         };
 
-        await _DirectorsRepository.CreateAsync(Director);
+        await _DirectorsRepository.CreateAsync(director);
         
         //201
-        return Created("", new DirectorDto(Director.Id, Director.FullName, Director.Gender, Director.Country, Director.BirthDate, Director.RegisterDate, Director.Biography, Director.SpokenLanguages, Director.Address, Director.Phone, Director.Email, Director.IsAvailable));
+        return Created("", new DirectorDto(director.Id, director.FullName, director.Gender, director.Country, director.BirthDate, director.RegisterDate, director.Biography, director.SpokenLanguages, director.Address, director.Phone, director.Email, director.IsAvailable));
         //return CreatedAtAction("GetDirector", new { DirectorId = Director.Id}, new DirectorDto(Director.FullName, Director.Gender, Director.Role, Director.Country, Director.BirthDate, Director.RegisterDate, Director.Biography, Director.SpokenLanguages, Director.Address, Director.Phone, Director.Email, Director.IsAvailable));
     }
     
-    // api/Directors/{DirectorId}
+    // api/Directors/{directorId}
     [HttpPut]
-    [Route("{DirectorId}")]
-    public async Task<ActionResult<DirectorDto>> Update(int DirectorId, UpdateDirectorDto updateDirectorDto)
+    [Route("{directorId}")]
+    public async Task<ActionResult<DirectorDto>> Update(int directorId, UpdateDirectorDto updateDirectorDto)
     {
-        var Director = await _DirectorsRepository.GetAsync(DirectorId);
+        var director = await _DirectorsRepository.GetAsync(directorId);
 
-        if (Director == null)
+        if (director == null)
         {
-            return NotFound();
+            return NotFound(new { message = $"Could not find Director with an Id of {directorId}" });
         }
 
-        Director.FullName = updateDirectorDto.FullName;
-        Director.Gender = updateDirectorDto.Gender;
-        Director.Country = updateDirectorDto.Country;
-        Director.BirthDate = updateDirectorDto.BirthDate;
-        Director.Biography = updateDirectorDto.Biography;
-        Director.SpokenLanguages = updateDirectorDto.SpokenLanguages;
-        Director.Address = updateDirectorDto.Address;
-        Director.Phone = updateDirectorDto.Phone;
-        Director.Email = updateDirectorDto.Email;
-        Director.IsAvailable = updateDirectorDto.IsAvailable;
+        director.FullName = updateDirectorDto.FullName;
+        director.Gender = updateDirectorDto.Gender;
+        director.Country = updateDirectorDto.Country;
+        director.BirthDate = updateDirectorDto.BirthDate;
+        director.Biography = updateDirectorDto.Biography;
+        director.SpokenLanguages = updateDirectorDto.SpokenLanguages;
+        director.Address = updateDirectorDto.Address;
+        director.Phone = updateDirectorDto.Phone;
+        director.Email = updateDirectorDto.Email;
+        director.IsAvailable = updateDirectorDto.IsAvailable;
 
-        await _DirectorsRepository.UpdateAsync(Director);
+        await _DirectorsRepository.UpdateAsync(director);
 
-        return Ok(new DirectorDto(Director.Id, Director.FullName, Director.Gender, Director.Country, Director.BirthDate, Director.RegisterDate, Director.Biography, Director.SpokenLanguages, Director.Address, Director.Phone, Director.Email, Director.IsAvailable));
+        return Ok(new DirectorDto(director.Id, director.FullName, director.Gender, director.Country, director.BirthDate, director.RegisterDate, director.Biography, director.SpokenLanguages, director.Address, director.Phone, director.Email, director.IsAvailable));
     }
     
     // api/Directors/{DirectorId}
     [HttpDelete]
-    [Route("{DirectorId}")]
-    public async Task<ActionResult> Remove(int DirectorId)
+    [Route("{directorId}")]
+    public async Task<ActionResult> Remove(int directorId)
     {
-        var Director = await _DirectorsRepository.GetAsync(DirectorId);
+        var director = await _DirectorsRepository.GetAsync(directorId);
 
-        if (Director == null)
+        if (director == null)
         {
-            return NotFound();
+            return NotFound(new { message = $"Could not find Director with an Id of {directorId}" });
         }
 
-        await _DirectorsRepository.DeleteAsync(Director);
+        await _DirectorsRepository.DeleteAsync(director);
         
         //204
         return NoContent();
+    }
+
+    private string? CreateTopicsResourceUri(DirectorSearchParameters directorSearchParameters, ResourceUriType type)
+    {
+        return type switch
+        {
+            ResourceUriType.PreviousPage => Url.Link("GetTopics", new
+            {
+                pageNumber = directorSearchParameters.PageNumber - 1,
+                pageSize = directorSearchParameters.PageSize,
+            }),
+            ResourceUriType.NextPage => Url.Link("GetTopics", new
+            {
+                pageNumber = directorSearchParameters.PageNumber + 1,
+                pageSize = directorSearchParameters.PageSize,
+            }),
+            _ => Url.Link("GetTopics", new
+            {
+                pageNumber = directorSearchParameters.PageNumber,
+                pageSize = directorSearchParameters.PageSize,
+            })
+        };
     }
 }

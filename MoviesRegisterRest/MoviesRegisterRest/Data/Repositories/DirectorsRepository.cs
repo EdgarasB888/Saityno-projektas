@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using MoviesRegisterRest.Data.Dtos.Directors;
 using MoviesRegisterRest.Data.Entities;
+using MoviesRegisterRest.Helpers;
 
 namespace MoviesRegisterRest.Data.Repositories;
 
@@ -7,6 +9,7 @@ public interface IDirectorsRepository
 {
     Task<Director?> GetAsync(int DirectorId);
     Task<IReadOnlyList<Director?>> GetManyAsync();
+    Task<PagedList<Director?>> GetManyAsync(DirectorSearchParameters searchParameters);
     Task CreateAsync(Director Director);
     Task UpdateAsync(Director Director);
     Task DeleteAsync(Director Director);
@@ -29,6 +32,13 @@ public class DirectorsRepository : IDirectorsRepository
     public async Task<IReadOnlyList<Director?>> GetManyAsync()
     {
         return await _webDbContext.Directors.ToListAsync();
+    }
+    
+    public async Task<PagedList<Director?>> GetManyAsync(DirectorSearchParameters searchParameters)
+    {
+        var queryable = _webDbContext.Directors.AsQueryable().OrderBy(o => o.Id);
+
+        return await PagedList<Director>.CreateAsync(queryable, searchParameters.PageNumber, searchParameters.PageSize);
     }
     
     public async Task CreateAsync(Director Director)
