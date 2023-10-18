@@ -26,4 +26,3 @@ Administratorius galės:
 •	Peržiūrėti, sukurti, redaguoti ir ištrinti filmus;
 •	Peržiūrėti, sukurti, redaguoti ir ištrinti filmų studijas;
 •	Peržiūrėti, sukurti, redaguoti ir ištrinti kino režisierius;
-![image](https://github.com/EdgarasB888/Saityno-projektas/assets/46862483/6fcb7097-9669-4cb3-82ad-f66ab0aea100)
