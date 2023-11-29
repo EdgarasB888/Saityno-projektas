@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{091807D7-C8E9-4E74-91B2-54BDFE8E7BFB}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MoviesRegisterRest/Dockerfile">
+    <Files>
+      <File FileName="MoviesRegisterRest/Dockerfile" Line="21" Column="35" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MoviesRegisterRest" expanded="True">
+            <Node name="MoviesRegisterRest" expanded="True">
+              <Node name="Dockerfile" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.MoviesRegisterRest PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.docker-compose PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

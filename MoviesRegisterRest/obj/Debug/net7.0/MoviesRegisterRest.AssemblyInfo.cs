@@ -10,6 +10,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("8d76fa8c-f59f-4140-a564-c86eb29da6e7")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("MoviesRegisterRest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
