@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using MoviesRegisterRest.Auth.Model;
 using MoviesRegisterRest.Data.Dtos.Directors;
 using MoviesRegisterRest.Data.Dtos.Movies;
 using MoviesRegisterRest.Data.Dtos.MovieStudio;
@@ -15,12 +19,15 @@ public class MoviesController : ControllerBase
     private readonly IDirectorsRepository _DirectorsRepository;
     private readonly IMovieStudiosRepository _MovieStudiosRepository;
     private readonly IMoviesRepository _MoviesRepository;
+    private readonly IAuthorizationService _authorizationService;
 
-    public MoviesController(IDirectorsRepository DirectorsRepository, IMovieStudiosRepository MovieStudiosRepository, IMoviesRepository MoviesRepository)
+    public MoviesController(IDirectorsRepository DirectorsRepository, IMovieStudiosRepository MovieStudiosRepository,
+                            IMoviesRepository MoviesRepository, IAuthorizationService authorizationService)
     {
         _DirectorsRepository = DirectorsRepository;
         _MovieStudiosRepository = MovieStudiosRepository;
         _MoviesRepository = MoviesRepository;
+        _authorizationService = authorizationService;
     }
 
     [HttpGet]
@@ -50,6 +57,7 @@ public class MoviesController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = MoviesWebRoles.MovieStudioCEO + "," + MoviesWebRoles.Director)]
     public async Task<ActionResult<MovieDto>> Create(int directorId, int movieStudioId, CreateMovieDto createMovieDto)
     {
         var director = await _DirectorsRepository.GetAsync(directorId);
@@ -72,7 +80,8 @@ public class MoviesController : ControllerBase
             Budget = createMovieDto.Budget,
             ProductionStatus = createMovieDto.ProductionStatus,
             OriginCountry = createMovieDto.OriginCountry,
-            MovieStudio = movieStudio
+            MovieStudio = movieStudio,
+            UserId = User.FindFirstValue(JwtRegisteredClaimNames.Sub)
         };
 
         await _MoviesRepository.CreateAsync(movie);
@@ -83,6 +92,7 @@ public class MoviesController : ControllerBase
 
     [HttpPut]
     [Route("{movieId}")]
+    [Authorize(Roles = MoviesWebRoles.MovieStudioCEO + "," + MoviesWebRoles.Director)]
     public async Task<ActionResult<MovieDto>> Update(int directorId, int movieStudioId, int movieId, UpdateMovieDto updateMovieDto)
     {
         var director = await _DirectorsRepository.GetAsync(directorId);
@@ -103,6 +113,12 @@ public class MoviesController : ControllerBase
             return NotFound(new { message = $"Could not find Movie with an Id of {movieId} of Movie Studio with an Id {movieStudioId} and Director with an Id of {directorId}" });
         }
 
+        var authorizationResult = await _authorizationService.AuthorizeAsync(User, movie, PolicyNames.ResourceOwner);
+        if (!authorizationResult.Succeeded)
+        {
+            return Forbid(); //arba grąžinti 404
+        }
+
         movie.Name = updateMovieDto.Name;
         movie.Genre = updateMovieDto.Genre;
         movie.PlotSummary = updateMovieDto.PlotSummary;
@@ -117,6 +133,7 @@ public class MoviesController : ControllerBase
 
     [HttpDelete]
     [Route("{movieId}")]
+    [Authorize(Roles = MoviesWebRoles.MovieStudioCEO + "," + MoviesWebRoles.Director)]
     public async Task<ActionResult> Remove(int directorId, int movieStudioId, int movieId)
     {
         var director = await _DirectorsRepository.GetAsync(directorId);
@@ -135,6 +152,12 @@ public class MoviesController : ControllerBase
         if (movie == null)
         {
             return NotFound(new { message = $"Could not find Movie with an Id of {movieId} of Movie Studio with an Id {movieStudioId} and Director with an Id of {directorId}" });
+        }
+
+        var authorizationResult = await _authorizationService.AuthorizeAsync(User, movie, PolicyNames.ResourceOwner);
+        if (!authorizationResult.Succeeded)
+        {
+            return Forbid(); //arba grąžinti 404
         }
 
         await _MoviesRepository.DeleteAsync(movie);

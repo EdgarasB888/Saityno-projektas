@@ -163,11 +163,18 @@ D:/Mokslai/7 semestras/Saityno taikomųjų programų projektavimas/Saityno-proje
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/MoviesRegisterRest.pdb
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Azure.Core.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Azure.Identity.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/FluentValidation.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/FluentValidation.AspNetCore.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/FluentValidation.DependencyInjectionExtensions.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Google.Protobuf.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Humanizer.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/K4os.Compression.LZ4.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/K4os.Compression.LZ4.Streams.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/K4os.Hash.xxHash.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.Bcl.AsyncInterfaces.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.Data.SqlClient.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
@@ -176,6 +183,9 @@ D:/Mokslai/7 semestras/Saityno taikomųjų programų projektavimas/Saityno-proje
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Relational.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.SqlServer.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.Extensions.Identity.Core.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.Extensions.Identity.Stores.dll
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.Extensions.Options.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.Identity.Client.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.Identity.Client.Extensions.Msal.dll
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/Microsoft.IdentityModel.Abstractions.dll
@@ -224,6 +234,7 @@ D:/Mokslai/7 semestras/Saityno taikomųjų programų projektavimas/Saityno-proje
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/MoviesRegisterRest.AssemblyInfoInputs.cache
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/MoviesRegisterRest.AssemblyInfo.cs
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/MoviesRegisterRest.csproj.CoreCompileInputs.cache
+/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/MoviesRegisterRest.MvcApplicationPartsAssemblyInfo.cs
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/MoviesRegisterRest.MvcApplicationPartsAssemblyInfo.cache
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/staticwebassets/msbuild.MoviesRegisterRest.Microsoft.AspNetCore.StaticWebAssets.props
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/staticwebassets/msbuild.build.MoviesRegisterRest.props
@@ -239,7 +250,3 @@ D:/Mokslai/7 semestras/Saityno taikomųjų programų projektavimas/Saityno-proje
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/MoviesRegisterRest.pdb
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/MoviesRegisterRest.genruntimeconfig.cache
 /Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/ref/MoviesRegisterRest.dll
-/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/FluentValidation.dll
-/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/FluentValidation.AspNetCore.dll
-/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/bin/Debug/net7.0/FluentValidation.DependencyInjectionExtensions.dll
-/Users/imac/RiderProjects/MoviesRegisterRest/Saityno-projektas/MoviesRegisterRest/MoviesRegisterRest/obj/Debug/net7.0/MoviesRegisterRest.MvcApplicationPartsAssemblyInfo.cs

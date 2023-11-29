@@ -3,6 +3,11 @@ using MoviesRegisterRest.Data.Dtos.Directors;
 using MoviesRegisterRest.Data.Dtos.MovieStudio;
 using MoviesRegisterRest.Data.Repositories;
 using MoviesRegisterRest.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
+using MoviesRegisterRest.Auth.Model;
+using System.Data;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace MoviesRegisterRest.Controllers;
 
@@ -12,11 +17,14 @@ public class MovieStudiosController : ControllerBase
 {
     private readonly IDirectorsRepository _DirectorsRepository;
     private readonly IMovieStudiosRepository _MovieStudiosRepository;
+    private readonly IAuthorizationService _authorizationService;
 
-    public MovieStudiosController(IDirectorsRepository DirectorsRepository, IMovieStudiosRepository MovieStudiosRepository)
+    public MovieStudiosController(IDirectorsRepository DirectorsRepository, IMovieStudiosRepository MovieStudiosRepository,
+        IAuthorizationService authorizationService)
     {
         _DirectorsRepository = DirectorsRepository;
         _MovieStudiosRepository = MovieStudiosRepository;
+        _authorizationService = authorizationService;
     }
 
     // AutoMapper
@@ -46,6 +54,7 @@ public class MovieStudiosController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = MoviesWebRoles.MovieStudioCEO)]
     public async Task<ActionResult<MovieStudioDto>> Create(int directorId, CreateMovieStudioDto createMovieStudioDto)
     {
         var director = await _DirectorsRepository.GetAsync(directorId);
@@ -60,7 +69,8 @@ public class MovieStudiosController : ControllerBase
             Address = createMovieStudioDto.Address,
             Phone = createMovieStudioDto.Phone,
             Email = createMovieStudioDto.Email,
-            Director = director
+            Director = director,
+            UserId = User.FindFirstValue(JwtRegisteredClaimNames.Sub)
         };
 
         await _MovieStudiosRepository.CreateAsync(movieStudio);
@@ -71,6 +81,7 @@ public class MovieStudiosController : ControllerBase
 
     [HttpPut]
     [Route("{movieStudioId}")]
+    [Authorize(Roles = MoviesWebRoles.MovieStudioCEO)]
     public async Task<ActionResult<MovieStudioDto>> Update(int directorId, int movieStudioId, UpdateMovieStudioDto updateMovieStudioDto)
     {
         var director = await _DirectorsRepository.GetAsync(directorId);
@@ -85,6 +96,12 @@ public class MovieStudiosController : ControllerBase
             return NotFound(new { message = $"Could not find Movie Studio with an Id of {movieStudioId} and Director with an Id of {directorId}" });
         }
 
+        var authorizationResult = await _authorizationService.AuthorizeAsync(User, movieStudio, PolicyNames.ResourceOwner);
+        if (!authorizationResult.Succeeded)
+        {
+            return Forbid(); //arba grąžinti 404
+        }
+
         movieStudio.Name = updateMovieStudioDto.Name;
         movieStudio.Address = updateMovieStudioDto.Address;
         movieStudio.Phone = updateMovieStudioDto.Phone;
@@ -97,6 +114,7 @@ public class MovieStudiosController : ControllerBase
 
     [HttpDelete]
     [Route("{movieStudioId}")]
+    [Authorize(Roles = MoviesWebRoles.MovieStudioCEO)]
     public async Task<ActionResult> Remove(int directorId, int movieStudioId)
     {
         var director = await _DirectorsRepository.GetAsync(directorId);
@@ -109,6 +127,12 @@ public class MovieStudiosController : ControllerBase
         if (movieStudio == null)
         {
             return NotFound(new { message = $"Could not find Movie Studio with an Id of {movieStudioId} and Director with an Id of {directorId}" });
+        }
+
+        var authorizationResult = await _authorizationService.AuthorizeAsync(User, movieStudio, PolicyNames.ResourceOwner);
+        if (!authorizationResult.Succeeded)
+        {
+            return Forbid(); //arba grąžinti 404
         }
 
         await _MovieStudiosRepository.DeleteAsync(movieStudio);

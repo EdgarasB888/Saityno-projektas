@@ -1,3 +1,6 @@
+using MoviesRegisterRest.Auth.Model;
+using System.ComponentModel.DataAnnotations;
+
 namespace MoviesRegisterRest.Data.Entities;
 
 public class MovieStudio
@@ -9,4 +12,8 @@ public class MovieStudio
     public string Email { get; set; }
     
     public Director Director { get; set; }
+
+    [Required]
+    public string UserId { get; set; }
+    public MoviesWebUser User { get; set; }
 }

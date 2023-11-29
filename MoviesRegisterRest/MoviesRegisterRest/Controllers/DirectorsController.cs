@@ -1,5 +1,9 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MoviesRegisterRest.Auth.Model;
 using MoviesRegisterRest.Data;
 using MoviesRegisterRest.Data.Dtos.Directors;
 using MoviesRegisterRest.Data.Entities;
@@ -12,10 +16,12 @@ namespace MoviesRegisterRest.Controllers;
 public class DirectorsController : ControllerBase
 {
     private readonly IDirectorsRepository _DirectorsRepository;
-    
-    public DirectorsController(IDirectorsRepository DirectorsRepository)
+    private readonly IAuthorizationService _authorizationService;
+
+    public DirectorsController(IDirectorsRepository DirectorsRepository, IAuthorizationService authorizationService)
     {
         _DirectorsRepository = DirectorsRepository;
+        _authorizationService = authorizationService;
     }
 
     // AutoMapper
@@ -75,6 +81,7 @@ public class DirectorsController : ControllerBase
     
     // api/Directors
     [HttpPost]
+    [Authorize(Roles = MoviesWebRoles.Director)]
     public async Task<ActionResult<DirectorDto>> Create(CreateDirectorDto createDirectorDto)
     {
         var director = new Director
@@ -89,7 +96,8 @@ public class DirectorsController : ControllerBase
             Address = createDirectorDto.Address,
             Phone = createDirectorDto.Phone,
             Email = createDirectorDto.Email,
-            IsAvailable = createDirectorDto.IsAvailable
+            IsAvailable = createDirectorDto.IsAvailable,
+            UserId = User.FindFirstValue(JwtRegisteredClaimNames.Sub)
         };
 
         await _DirectorsRepository.CreateAsync(director);
@@ -102,6 +110,7 @@ public class DirectorsController : ControllerBase
     // api/Directors/{directorId}
     [HttpPut]
     [Route("{directorId}")]
+    [Authorize(Roles = MoviesWebRoles.Director)]
     public async Task<ActionResult<DirectorDto>> Update(int directorId, UpdateDirectorDto updateDirectorDto)
     {
         var director = await _DirectorsRepository.GetAsync(directorId);
@@ -109,6 +118,12 @@ public class DirectorsController : ControllerBase
         if (director == null)
         {
             return NotFound(new { message = $"Could not find Director with an Id of {directorId}" });
+        }
+
+        var authorizationResult = await _authorizationService.AuthorizeAsync(User, director, PolicyNames.ResourceOwner);
+        if(!authorizationResult.Succeeded)
+        {
+            return Forbid(); //arba grąžinti 404
         }
 
         director.FullName = updateDirectorDto.FullName;
@@ -130,6 +145,7 @@ public class DirectorsController : ControllerBase
     // api/Directors/{DirectorId}
     [HttpDelete]
     [Route("{directorId}")]
+    [Authorize(Roles = MoviesWebRoles.Director)]
     public async Task<ActionResult> Remove(int directorId)
     {
         var director = await _DirectorsRepository.GetAsync(directorId);
@@ -137,6 +153,12 @@ public class DirectorsController : ControllerBase
         if (director == null)
         {
             return NotFound(new { message = $"Could not find Director with an Id of {directorId}" });
+        }
+
+        var authorizationResult = await _authorizationService.AuthorizeAsync(User, director, PolicyNames.ResourceOwner);
+        if (!authorizationResult.Succeeded)
+        {
+            return Forbid(); //arba grąžinti 404
         }
 
         await _DirectorsRepository.DeleteAsync(director);

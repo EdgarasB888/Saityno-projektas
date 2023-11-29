@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MoviesRegisterRest.Auth.Model;
 using MoviesRegisterRest.Data.Entities;
 
 namespace MoviesRegisterRest.Data;
 
-public class WebDbContext : DbContext
+public class WebDbContext : IdentityDbContext<MoviesWebUser>
 {
     public DbSet<Director> Directors { get; set; }
     public DbSet<Movie> Movies { get; set; }

@@ -1,0 +1,37 @@
+﻿<Properties StartupConfiguration="{48E7F75D-5E0A-4119-A5E1-3567A561BBFB}|https">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.MoviesRegisterRest PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MoviesRegisterRest/Auth/JwtTokenService.cs">
+    <Files>
+      <File FileName="MoviesRegisterRest/Auth/Model/MoviesWebRoles.cs" Line="11" Column="101" />
+      <File FileName="MoviesRegisterRest/Controllers/DirectorsController.cs" Line="161" Column="25" />
+      <File FileName="MoviesRegisterRest/Controllers/MovieStudiosController.cs" Line="103" Column="10" />
+      <File FileName="MoviesRegisterRest/Controllers/MoviesController.cs" Line="159" Column="10" />
+      <File FileName="MoviesRegisterRest/Auth/JwtTokenService.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MoviesRegisterRest" expanded="True">
+            <Node name="MoviesRegisterRest">
+              <Node name="Auth" expanded="True">
+                <Node name="Model" expanded="True" />
+                <Node name="JwtTokenService.cs" selected="True" />
+              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True">
+                <Node name="Entities" expanded="True" />
+              </Node>
+              <Node name="Helpers" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

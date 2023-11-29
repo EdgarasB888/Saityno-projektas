@@ -1,3 +1,6 @@
+using MoviesRegisterRest.Auth.Model;
+using System.ComponentModel.DataAnnotations;
+
 namespace MoviesRegisterRest.Data.Entities;
 
 public class Movie
@@ -11,4 +14,8 @@ public class Movie
     public string OriginCountry { get; set; }
 
     public MovieStudio MovieStudio { get; set; }
+
+    [Required]
+    public string UserId { get; set; }
+    public MoviesWebUser User { get; set; }
 }
