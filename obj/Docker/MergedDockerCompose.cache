@@ -1,0 +1,35 @@
+name: dockercompose15626786346823308252
+services:
+  moviesregisterrest:
+    build:
+      context: D:\Mokslai\7 semestras\Saityno taikomųjų programų projektavimas\Saityno-projektas
+      dockerfile: MoviesRegisterRest/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: moviesregisterrest
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+      - mode: ingress
+        target: 443
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\edgar\.aspnet\https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\edgar\.microsoft\usersecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: dockercompose15626786346823308252_default
